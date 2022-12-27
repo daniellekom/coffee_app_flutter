@@ -11,6 +11,39 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  // list of coffee types
+  final List coffeeType = [
+    //[ coffee type, isSelectted ]
+    [
+      'Cappuccino',
+      true,
+    ],
+    [
+      'Latte',
+      false,
+    ],
+    [
+      'Espresso',
+      false,
+    ],
+    [
+      'Tea',
+      false,
+    ],
+  ];
+
+  // user tapped on coffee types
+  void coffeeTypeSelected(int index) {
+    setState(() {
+
+      // this for loop makes every selection false
+      for(int i = 0; i < coffeeType.length; i++){
+        coffeeType[i][1] = false;
+      }
+      coffeeType[index][1]= true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,13 +103,18 @@ class _HomepageState extends State<Homepage> {
         // Horizontal listview for specified coffee types
         Container(
           height: 50,
-          child: ListView(
-          scrollDirection: Axis.horizontal,
-          children:  [
-            CoffeeType(coffeeType: "Cappuccino"),
-            CoffeeType(coffeeType: "Latte"),
-            CoffeeType(coffeeType: "Espresso"),
-          ],),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+              itemCount: coffeeType.length,
+              itemBuilder: (context,index){
+            return CoffeeType(
+                coffeeType: coffeeType[index][0],
+                isSelected: coffeeType[index][1],
+                onTap: (){
+                   coffeeTypeSelected(index);
+                },
+            );
+          })
         ),
 
         // Horizontal listview of coffee tiles
@@ -84,9 +122,9 @@ class _HomepageState extends State<Homepage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: const [
-            CoffeeTile(),
-            CoffeeTile(),
-            CoffeeTile(),
+              CoffeeTile(),
+              CoffeeTile(),
+              CoffeeTile(),
             ],
           ),
         ),

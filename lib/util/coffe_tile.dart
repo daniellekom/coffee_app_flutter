@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
-  const CoffeeTile({Key? key}) : super(key: key);
+
+  final String coffeeImagePath;
+  final String coffeeName;
+  final String coffeePrice;
+
+  CoffeeTile({required this.coffeeImagePath,required this.coffeeName,required this.coffeePrice})
 
   @override
   Widget build(BuildContext context) {
