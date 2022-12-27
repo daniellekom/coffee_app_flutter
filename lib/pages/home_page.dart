@@ -1,4 +1,5 @@
 import 'package:coffeeappui/util/coffe_tile.dart';
+import 'package:coffeeappui/util/coffee_type.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -49,7 +50,7 @@ class _HomepageState extends State<Homepage> {
         // Search bar
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: TextField(
+          child: TextFormField(
             decoration: InputDecoration(
               prefix: const Icon(Icons.search),
               hintText: 'Find your Coffee ..',
@@ -64,6 +65,18 @@ class _HomepageState extends State<Homepage> {
         ),
         SizedBox(
           height: 25,
+        ),
+
+        // Horizontal listview for specified coffee types
+        Container(
+          height: 50,
+          child: ListView(
+          scrollDirection: Axis.horizontal,
+          children:  [
+            CoffeeType(coffeeType: "Cappuccino"),
+            CoffeeType(coffeeType: "Latte"),
+            CoffeeType(coffeeType: "Espresso"),
+          ],),
         ),
 
         // Horizontal listview of coffee tiles

@@ -10,23 +10,19 @@ class CoffeeTile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(12),
         width: 200,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.black54
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.black54),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // coffee image
             ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset('lib/images/cappucino.jpg'),
-          ),
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset('lib/images/cappucino.jpg'),
+            ),
 
             // coffee name
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,10 +30,33 @@ class CoffeeTile extends StatelessWidget {
                     'Latte',
                     style: TextStyle(fontSize: 20),
                   ),
-                   Text('With Almond Milk', style: TextStyle(color: Colors.grey[700]),),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    'With Almond Milk',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
                 ],
               ),
             ),
+            // price
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [Text('\$4.00'),
+                  Container(
+                    padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                      color:Colors.orange,
+                      borderRadius: BorderRadius.circular(6)
+                  ),
+                  child: Icon(Icons.add),
+                )
+                ],
+              ),
+            )
           ],
         ),
       ),
