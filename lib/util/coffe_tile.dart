@@ -6,23 +6,29 @@ class CoffeeTile extends StatelessWidget {
   final String coffeeName;
   final String coffeePrice;
 
-  CoffeeTile({required this.coffeeImagePath,required this.coffeeName,required this.coffeePrice})
+  const CoffeeTile({
+    required this.coffeeImagePath,
+    required this.coffeeName,
+    required this.coffeePrice
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, bottom: 25),
       child: Container(
-        padding: EdgeInsets.all(12),
-        width: 200,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.black54),
+        padding: EdgeInsets.all(15),
+        width: 180,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.black54),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // coffee image
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset('lib/images/cappucino.jpg'),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(coffeeImagePath),
+              ),
             ),
 
             // coffee name
@@ -31,8 +37,8 @@ class CoffeeTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Latte',
+                   Text(
+                   coffeeName,
                     style: TextStyle(fontSize: 20),
                   ),
                   const SizedBox(
@@ -50,15 +56,15 @@ class CoffeeTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [Text('\$4.00'),
+                children: [Text('\$' + coffeePrice ),
                   Container(
                     padding: EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                      color:Colors.orange,
-                      borderRadius: BorderRadius.circular(6)
-                  ),
-                  child: Icon(Icons.add),
-                )
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(6)
+                    ),
+                    child: Icon(Icons.add),
+                  )
                 ],
               ),
             )

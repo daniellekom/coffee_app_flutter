@@ -119,12 +119,24 @@ class _HomepageState extends State<Homepage> {
 
         // Horizontal listview of coffee tiles
         Expanded(
+
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: const [
-              CoffeeTile(),
-              CoffeeTile(),
-              CoffeeTile(),
+              CoffeeTile(
+                coffeeImagePath: 'lib/images/espresso.jpg',
+                coffeeName: 'Cappucino',
+                coffeePrice: '4.20',
+              ),  CoffeeTile(
+                coffeeImagePath: 'lib/images/coffeebeans.jpg',
+                coffeeName: 'Coffee Beans',
+                coffeePrice: '4.00',
+              ),  CoffeeTile(
+                coffeeImagePath: 'lib/images/espresso.jpg',
+                coffeeName: 'Espresso',
+                coffeePrice: '2.75',
+              ),
+
             ],
           ),
         ),
